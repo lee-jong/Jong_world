@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../components/shared/NavBar';
 import App, { Container } from 'next/app';
 import BaseLayout from '../components/layout/BaseLayout';
 

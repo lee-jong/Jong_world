@@ -23,7 +23,7 @@ class Home extends React.Component {
             loop
             muted
             playsInline
-            src="../styles/images/banner.mp4"
+            src="/static/styles/images/banner.mp4"
           />
         </section>
 
@@ -173,7 +173,7 @@ class Home extends React.Component {
                   </blockquote>
                   <div className="author">
                     <div className="image">
-                      <img src="../styles/images/pic01.jpg" alt="" />
+                      <img src="/static/styles/images/pic01.jpg" alt="" />
                     </div>
                     <p className="credit">
                       - <strong>Jane Doe</strong> <span>CEO - ABC Inc.</span>
@@ -192,7 +192,7 @@ class Home extends React.Component {
                   </blockquote>
                   <div className="author">
                     <div className="image">
-                      <img src="images/pic03.jpg" alt="" />
+                      <img src="/static/styles/images/pic03.jpg" alt="" />
                     </div>
                     <p className="credit">
                       - <strong>John Doe</strong> <span>CEO - ABC Inc.</span>
@@ -211,7 +211,7 @@ class Home extends React.Component {
                   </blockquote>
                   <div className="author">
                     <div className="image">
-                      <img src="images/pic02.jpg" alt="" />
+                      <img src="/static/styles/images/pic02.jpg" alt="" />
                     </div>
                     <p className="credit">
                       - <strong>Janet Smith</strong> <span>CEO - ABC Inc.</span>

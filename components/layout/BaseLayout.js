@@ -8,12 +8,11 @@ const BaseLayout = ({ children }) => {
   return (
     <>
       <Meta />
-      <body className="is-preload">
-        <Header />
-        <Nav />
-        {children}
-        <Footer />
-      </body>
+
+      <Header />
+      {/* <Nav /> */}
+      {children}
+      <Footer />
     </>
   );
 };

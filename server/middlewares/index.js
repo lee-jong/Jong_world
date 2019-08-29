@@ -3,7 +3,7 @@ const compression = require('compression');
 
 module.exports = app => {
   if (isProd) {
-    app.use(compression);
+    app.use(compression());
   } else {
   }
 };
