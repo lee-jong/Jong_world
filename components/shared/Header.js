@@ -1,17 +1,45 @@
 import React from 'react';
 
-const Header = () => {
-  return (
-    //   <!-- Header -->
-    <header id="header">
-      <a className="logo" href="index.html">
-        Industrious
-      </a>
-      <nav>
-        <a href="#menu">Menu</a>
-      </nav>
-    </header>
-  );
-};
+class Header extends React.Component {
+  state = {
+    onMenu: false
+  };
+
+  onHandleMenu = () => {
+    let $body = $('body');
+    $body.addClass('is-menu-visible');
+  };
+
+  render() {
+    return (
+      <>
+        <header id="header">
+          <a className="logo">Jong's Word</a>
+          <nav>
+            <a href="#menu" onClick={this.onHandleMenu}>
+              Menu
+            </a>
+          </nav>
+
+          <nav id="menu">
+            <ul className="links">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="elements.html">Elements</a>
+              </li>
+              <li>
+                <a href="generic.html">Generic</a>
+              </li>
+            </ul>
+
+            <a href="#menu" class="close"></a>
+          </nav>
+        </header>
+      </>
+    );
+  }
+}
 
 export default Header;
