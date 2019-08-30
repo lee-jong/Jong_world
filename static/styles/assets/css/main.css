@@ -2500,7 +2500,7 @@ body {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  background-image: linear-gradient(rgba(17, 17, 17, 0.25), rgba(17, 17, 17, 0.25)), url("/static/styles/images/banner.jpg");
+  background-image: linear-gradient(rgba(17, 17, 17, 0.25), rgba(17, 17, 17, 0.25)), url("/static/styles/images/iron_man7.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2705,8 +2705,16 @@ body {
     color: #ce1b28; }
   #menu strong, #menu b {
     color: #ffffff; }
-  #menu h1, #menu h2, #menu h3, #menu h4, #menu h5, #menu h6 {
+  #menu h1, #menu h2, #menu h3, #menu h4, #menu h5 {
     color: #ffffff; }
+    #menu h6 {
+      color : #8A0808;
+      position: absolute;
+      top:45%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left:  -100px;
+    }
   #menu blockquote {
     border-left-color: rgba(255, 255, 255, 0.25); }
   #menu code {
@@ -2821,3 +2829,14 @@ body.is-menu-visible #menu {
   transform: translateX(0);
   box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
   visibility: visible; }
+
+
+  .iron_man_menu {
+    position: absolute;
+    top:40%;
+    left: 100%;
+    margin-top: -100px;
+    margin-left:  -100px;
+  }
+
+  

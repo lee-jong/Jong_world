@@ -11,13 +11,13 @@ class Home extends React.Component {
         {/* <!-- Banner --> */}
         <section id="banner">
           <div className="inner">
-            <h1>Industrious</h1>
-            <p>
+            <h1>I'AM IRON MAN !</h1>
+            {/* <p>
               A responsive business oriented template with a video background
               <br />
               designed by <a href="https://templated.co/">TEMPLATED</a> and
               released under the Creative Commons License.
-            </p>
+            </p> */}
           </div>
           <video
             autoPlay
