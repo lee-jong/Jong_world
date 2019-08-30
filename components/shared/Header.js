@@ -34,7 +34,7 @@ class Header extends React.Component {
               </li>
             </ul>
 
-            <a href="#menu" class="close"></a>
+            <a href="#menu" className="close"></a>
           </nav>
         </header>
       </>

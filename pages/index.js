@@ -24,7 +24,7 @@ class Home extends React.Component {
             loop
             muted
             playsInline
-            src="/static/styles/images/banner.mp4"
+            src="/static/styles/images/iron_man.mp4"
           />
         </section>
 
