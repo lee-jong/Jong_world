@@ -82,7 +82,7 @@ class SecretPage extends React.Component {
         <form className="search-bar">
           <input
             type="search"
-            placeholder="Search"
+            placeholder="Search ex. 1908 (년/월)"
             onBlur={this.offSearchInput}
           />
           <button onClick={this.onSearchInput}>
