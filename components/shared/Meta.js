@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import '../../static/styles/assets/css/main.css';
+import '../../static/styles/assets/css/button.css';
 
 const Meta = () => {
   return (
