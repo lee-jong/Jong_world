@@ -38,7 +38,7 @@ a.animated-button:visited:after {
 }
 a.animated-button:link:hover,
 a.animated-button:visited:hover {
-  color: #fff;
+  color: yellow;
   text-shadow: none;
 }
 a.animated-button:link:hover:after,
