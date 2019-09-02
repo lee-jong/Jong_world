@@ -16,6 +16,10 @@ const ImgList = ({}) => {
                   />
                   <div className="overlay">
                     <h2 className="card-title title">Cool Title</h2>
+                    <h2 className="card-title title"> 2019-09-02 </h2>
+                    <h2 className="card-title title" style={{ fontSize: 12 }}>
+                      내용
+                    </h2>
                   </div>
                 </div>
                 <div className="card card-pin">
