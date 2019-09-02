@@ -4,6 +4,7 @@ import '../../static/styles/assets/css/main.css';
 import '../../static/styles/assets/css/button.css';
 import '../../static/styles/assets/css/app.css';
 import '../../static/styles/assets/css/theme.css';
+import '../../static/styles/assets/css/search.css';
 
 const Meta = () => {
   return (

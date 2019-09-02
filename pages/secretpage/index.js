@@ -13,6 +13,16 @@ class SecretPage extends React.Component {
     });
   };
 
+  onSearchInput = e => {
+    e.preventDefault();
+    $('form').addClass('opened');
+    $("input[type='search']").focus();
+  };
+
+  offSearchInput = e => {
+    $('form').removeClass('opened');
+  };
+
   render() {
     const { onMenu } = this.state;
     return (
@@ -69,27 +79,48 @@ class SecretPage extends React.Component {
           </div>
         </section>
 
-        <div className="search">
-          <select className="optionBox">
-            <option>전체</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-
+        <form className="search-bar">
           <input
-            className="searchInput"
-            placeholder="ex) 1909 (년/월)"
-            type="text"
-            style={{ width: 440 }}
+            type="search"
+            placeholder="Search"
+            onBlur={this.offSearchInput}
           />
-          <button> 검색</button>
-        </div>
+          <button onClick={this.onSearchInput}>
+            <span className="fontawesome-search"></span>
+          </button>
+        </form>
 
         {onMenu === 'Memory' ? <ImgList /> : ''}
         {onMenu === 'Creation' ? 'Creation' : ''}
         {onMenu === 'Undetermined' ? 'Undetermined' : ''}
         {onMenu === 'Undetermined2' ? 'Undetermined2' : ''}
+        <div className="test">
+          <div className="pagination p1">
+            <ul>
+              <a href="#">
+                <li>〈</li>
+              </a>
+              <a className="is-active" href="#">
+                <li>1</li>
+              </a>
+              <a href="#">
+                <li>2</li>
+              </a>
+              <a href="#">
+                <li>3</li>
+              </a>
+              <a href="#">
+                <li>4</li>
+              </a>
+              <a href="#">
+                <li>5</li>
+              </a>
+              <a href="#">
+                <li>〉</li>
+              </a>
+            </ul>
+          </div>
+        </div>
       </>
     );
   }
