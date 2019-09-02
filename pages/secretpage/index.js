@@ -14,6 +14,7 @@ class SecretPage extends React.Component {
   };
 
   render() {
+    const { onMenu } = this.state;
     return (
       <>
         {/* <!-- Heading --> */}
@@ -61,13 +62,34 @@ class SecretPage extends React.Component {
                   onClick={this.handleMenu}
                   className="btn btn-sm animated-button victoria-four"
                 >
-                  Undetermined
+                  Undetermined2
                 </a>
               </div>
             </div>
           </div>
         </section>
-        <ImgList />
+
+        <div className="search">
+          <select className="optionBox">
+            <option>전체</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+
+          <input
+            className="searchInput"
+            placeholder="ex) 1909 (년/월)"
+            type="text"
+            style={{ width: 440 }}
+          />
+          <button> 검색</button>
+        </div>
+
+        {onMenu === 'Memory' ? <ImgList /> : ''}
+        {onMenu === 'Creation' ? 'Creation' : ''}
+        {onMenu === 'Undetermined' ? 'Undetermined' : ''}
+        {onMenu === 'Undetermined2' ? 'Undetermined2' : ''}
       </>
     );
   }

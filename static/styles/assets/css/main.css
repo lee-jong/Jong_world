@@ -505,7 +505,7 @@ input[type="search"],
 input[type="url"],
 select,
 textarea {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.25); }
   input[type="text"]:focus,
   input[type="password"]:focus,
@@ -2830,7 +2830,7 @@ body.is-menu-visible #menu {
   box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
   visibility: visible; }
 
-
+/* jong line */
   .iron_man_menu {
     position: absolute;
     top:40%;
@@ -2839,4 +2839,19 @@ body.is-menu-visible #menu {
     margin-left:  -100px;
   }
 
-  
+  .search { 
+    transform: translate(25%, 0%);
+  }
+
+  .optionBox{
+    width:150px;
+    margin-left: 100px;
+    left : 100%;
+    z-index : 999;
+    float : left;
+  }
+
+  .searchInput {
+    float : left;
+  }
+ 
