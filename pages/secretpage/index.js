@@ -1,6 +1,6 @@
 import React from 'react';
 import ImgList from '../../components/listComponent/imgList';
-import { getTest } from '../../actions/imgBoard';
+import Router from 'next/router';
 
 class SecretPage extends React.Component {
   state = {
@@ -22,6 +22,11 @@ class SecretPage extends React.Component {
 
   offSearchInput = e => {
     $('form').removeClass('opened');
+  };
+
+  goToInsertPage = e => {
+    const href = `/secretpage/insert`;
+    Router.push(href);
   };
 
   render() {
@@ -95,6 +100,10 @@ class SecretPage extends React.Component {
         {onMenu === 'Creation' ? 'Creation' : ''}
         {onMenu === 'Undetermined' ? 'Undetermined' : ''}
         {onMenu === 'Undetermined2' ? 'Undetermined2' : ''}
+
+        <div className="insetButton">
+          <button onClick={this.goToInsertPage}> 등록 </button>
+        </div>
       </>
     );
   }

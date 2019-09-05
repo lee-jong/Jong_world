@@ -1,12 +1,22 @@
 import { axiosInstance, handleSuccess, handleError } from './actionCofing';
 
-export const getTest = async () => {
+export const getImgList = async () => {
+  return await axiosInstance
+    .get('/imgBoard')
+    .then(handleSuccess)
+    .catch(handleError);
+};
+
+export const insertImgItem = async req => {
   let data = {
-    message: 'hi'
+    title: req.title,
+    place: req.place,
+    content: req.content,
+    image: req.image
   };
 
   return await axiosInstance
-    .get('/', data)
+    .post('/imgBoard', data)
     .then(handleSuccess)
     .catch(handleError);
 };

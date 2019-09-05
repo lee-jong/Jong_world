@@ -218,8 +218,7 @@ const ImgList = ({}) => {
         </section>
       </main>
 
-      {/*  */}
-      <div className="test">
+      <div className="paging">
         <div className="pagination p1">
           <ul>
             <a href="#">
