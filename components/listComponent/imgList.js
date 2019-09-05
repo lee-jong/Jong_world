@@ -217,6 +217,35 @@ const ImgList = ({}) => {
           </div>
         </section>
       </main>
+
+      {/*  */}
+      <div className="test">
+        <div className="pagination p1">
+          <ul>
+            <a href="#">
+              <li>〈</li>
+            </a>
+            <a className="is-active" href="#">
+              <li>1</li>
+            </a>
+            <a href="#">
+              <li>2</li>
+            </a>
+            <a href="#">
+              <li>3</li>
+            </a>
+            <a href="#">
+              <li>4</li>
+            </a>
+            <a href="#">
+              <li>5</li>
+            </a>
+            <a href="#">
+              <li>〉</li>
+            </a>
+          </ul>
+        </div>
+      </div>
     </>
   );
 };

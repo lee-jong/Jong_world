@@ -1,5 +1,6 @@
 import React from 'react';
 import ImgList from '../../components/listComponent/imgList';
+import { getTest } from '../../actions/imgBoard';
 
 class SecretPage extends React.Component {
   state = {
@@ -35,7 +36,7 @@ class SecretPage extends React.Component {
         <section id="main" className="wrapper">
           <div className="inner">
             <header>
-              <h2>Jong's Space</h2>
+              <h2>Jong's Space - {onMenu}</h2>
             </header>
             <hr />
             <div className="row">
@@ -94,33 +95,6 @@ class SecretPage extends React.Component {
         {onMenu === 'Creation' ? 'Creation' : ''}
         {onMenu === 'Undetermined' ? 'Undetermined' : ''}
         {onMenu === 'Undetermined2' ? 'Undetermined2' : ''}
-        <div className="test">
-          <div className="pagination p1">
-            <ul>
-              <a href="#">
-                <li>〈</li>
-              </a>
-              <a className="is-active" href="#">
-                <li>1</li>
-              </a>
-              <a href="#">
-                <li>2</li>
-              </a>
-              <a href="#">
-                <li>3</li>
-              </a>
-              <a href="#">
-                <li>4</li>
-              </a>
-              <a href="#">
-                <li>5</li>
-              </a>
-              <a href="#">
-                <li>〉</li>
-              </a>
-            </ul>
-          </div>
-        </div>
       </>
     );
   }
