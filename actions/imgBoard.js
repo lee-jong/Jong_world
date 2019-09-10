@@ -7,16 +7,9 @@ export const getImgList = async () => {
     .catch(handleError);
 };
 
-export const insertImgItem = async req => {
-  let data = {
-    title: req.title,
-    place: req.place,
-    content: req.content,
-    image: req.image
-  };
-
+export const insertImgItem = async formData => {
   return await axiosInstance
-    .post('/imgBoard', data)
+    .post('/imgBoard', formData)
     .then(handleSuccess)
     .catch(handleError);
 };

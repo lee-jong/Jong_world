@@ -1,12 +1,14 @@
 import React from 'react';
 import { insertImgItem } from '../../actions/imgBoard';
+import Router from 'next/router';
 
 class Insert extends React.Component {
   state = {
     title: '',
     place: '',
     content: '',
-    image: ''
+    image: '',
+    upload: ''
   };
 
   handleChange = e => {
@@ -16,12 +18,26 @@ class Insert extends React.Component {
   };
 
   formUploadImg = async e => {
-    const { image } = this.state;
+    const { title, place, content, upload } = this.state;
     const formData = new FormData();
-    formData.append('file', image);
+
+    const req = {
+      title,
+      place,
+      content
+    };
+    formData.append('file', upload);
+    formData.append('info', JSON.stringify(req));
+
     try {
       let res = await insertImgItem(formData);
-      console.log('res', res);
+      if (res.status === 200) {
+        alert('등록이 완료되었습니다.');
+        let href = '/secretpage';
+        Router.push(href);
+      } else {
+        alert('오류가 발생하였습니다.');
+      }
     } catch (err) {
       console.log('form img upload err', err);
     }
@@ -32,29 +48,12 @@ class Insert extends React.Component {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.setState({ image: reader.result });
+      this.setState({ image: reader.result, upload: file });
     };
 
     reader.onerror = () => {
       console.log('img upload err', err);
     };
-  };
-
-  handleCreateImgItem = async () => {
-    const { title, place, content, image } = this.state;
-    try {
-      let data = {
-        title,
-        place,
-        content,
-        image
-      };
-
-      let res = await insertImgItem(data);
-      console.log('check ', res);
-    } catch (err) {
-      console.log('create img item err', err);
-    }
   };
 
   render() {
