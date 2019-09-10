@@ -1,12 +1,27 @@
 import React from 'react';
 import ImgList from '../../components/listComponent/imgList';
 import Router from 'next/router';
+import { getImgList, deleteImgItem } from '../../actions/imgBoard';
 
 class SecretPage extends React.Component {
+  static async getInitialProps({ query }) {
+    let imgList = {};
+    try {
+      imgList = await getImgList();
+    } catch (err) {
+      console.log('err?');
+      imgList = { result: [] };
+    }
+    return {
+      imgList
+    };
+  }
   state = {
-    onMenu: 'Memory'
+    onMenu: 'Memory',
+    imgList: !this.props.imgList.result ? [] : this.props.imgList.result
   };
 
+  // 메뉴 이동
   handleMenu = e => {
     let checkedMenu = e.target.text;
     this.setState({
@@ -14,6 +29,7 @@ class SecretPage extends React.Component {
     });
   };
 
+  // 검색 on , off
   onSearchInput = e => {
     e.preventDefault();
     $('form').addClass('opened');
@@ -24,13 +40,36 @@ class SecretPage extends React.Component {
     $('form').removeClass('opened');
   };
 
+  // 페이지 이동
   goToInsertPage = e => {
     const href = `/secretpage/insert`;
     Router.push(href);
   };
 
+  // API 사용
+  deletedImage = async seq => {
+    console.log('check ', seq);
+    try {
+      let res = await deleteImgItem(seq);
+      console.log('check delete res', res);
+    } catch (err) {
+      console.log('delete img err');
+    }
+  };
+
+  //여기서부터 진행 TODO
+  updatedList = async () => {
+    try {
+      let res = await getImgList();
+      console.log('check', res);
+    } catch (err) {
+      console.log('upload  list err');
+    }
+  };
+
   render() {
-    const { onMenu } = this.state;
+    console.log('rendering');
+    const { onMenu, imgList } = this.state;
     return (
       <>
         {/* <!-- Heading --> */}
@@ -96,7 +135,11 @@ class SecretPage extends React.Component {
           </button>
         </form>
 
-        {onMenu === 'Memory' ? <ImgList /> : ''}
+        {onMenu === 'Memory' ? (
+          <ImgList imgList={imgList} deletedImage={this.deletedImage} />
+        ) : (
+          ''
+        )}
         {onMenu === 'Creation' ? 'Creation' : ''}
         {onMenu === 'Undetermined' ? 'Undetermined' : ''}
         {onMenu === 'Undetermined2' ? 'Undetermined2' : ''}

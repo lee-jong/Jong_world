@@ -33,8 +33,7 @@ class Insert extends React.Component {
       let res = await insertImgItem(formData);
       if (res.status === 200) {
         alert('등록이 완료되었습니다.');
-        let href = '/secretpage';
-        Router.push(href);
+        this.goToListPage();
       } else {
         alert('오류가 발생하였습니다.');
       }
@@ -50,10 +49,14 @@ class Insert extends React.Component {
     reader.onload = () => {
       this.setState({ image: reader.result, upload: file });
     };
-
     reader.onerror = () => {
       console.log('img upload err', err);
     };
+  };
+
+  goToListPage = () => {
+    let href = '/secretpage';
+    Router.push(href);
   };
 
   render() {
@@ -134,6 +137,10 @@ class Insert extends React.Component {
               <hr />
             </div>
           </div>
+        </div>
+
+        <div className="listButton">
+          <button onClick={this.goToListPage}> 목록 </button>
         </div>
       </>
     );
