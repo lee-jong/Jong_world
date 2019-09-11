@@ -12,7 +12,6 @@ class SecretPage extends React.Component {
         offset: 0
       };
       imgList = await getImgList(data);
-      console.log('check me !!', imgList);
     } catch (err) {
       imgList = { result: [], total: 0 };
     }

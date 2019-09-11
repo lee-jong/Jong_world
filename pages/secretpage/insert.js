@@ -59,6 +59,15 @@ class Insert extends React.Component {
     Router.push(href);
   };
 
+  goToListPageConfirm = () => {
+    if (confirm('작성을 취소하시겠습니까?')) {
+      let href = '/secretpage';
+      Router.push(href);
+    } else {
+      return false;
+    }
+  };
+
   render() {
     return (
       <>
@@ -140,7 +149,7 @@ class Insert extends React.Component {
         </div>
 
         <div className="listButton">
-          <button onClick={this.goToListPage}> 목록 </button>
+          <button onClick={this.goToListPageConfirm}> 목록 </button>
         </div>
       </>
     );
