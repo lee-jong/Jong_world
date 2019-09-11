@@ -1,5 +1,2 @@
-1. node multer 를 이용해서 서버 쪽에서 파일 업로드가 될 수 있도록 설정
-2. format 을 이용하여 서버쪽으로 파일 전송
-3. 참고 node multer formdata 검색하여 찾아보기
-4. 참고 multer 공식 홈페이지
-5. 참고 https://jamong-icetea.tistory.com/133 여기 잘 나와 있음 !! 굳굳
+term weighting 알아보기
+검색 기능 만들기

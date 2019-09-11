@@ -7,10 +7,14 @@ class SecretPage extends React.Component {
   static async getInitialProps({ query }) {
     let imgList = {};
     try {
-      imgList = await getImgList();
+      let data = {
+        limit: 20,
+        offset: 0
+      };
+      imgList = await getImgList(data);
+      console.log('check me !!', imgList);
     } catch (err) {
-      console.log('err?');
-      imgList = { result: [] };
+      imgList = { result: [], total: 0 };
     }
     return {
       imgList
@@ -18,10 +22,11 @@ class SecretPage extends React.Component {
   }
   state = {
     onMenu: 'Memory',
-    imgList: !this.props.imgList.result ? [] : this.props.imgList.result
+    imgList: !this.props.imgList.result ? [] : this.props.imgList.result,
+    total: !this.props.imgList.total ? [] : this.props.imgList.total
   };
 
-  // 메뉴 이동
+  // **메뉴 이동
   handleMenu = e => {
     let checkedMenu = e.target.text;
     this.setState({
@@ -29,7 +34,7 @@ class SecretPage extends React.Component {
     });
   };
 
-  // 검색 on , off
+  // **검색 on , off
   onSearchInput = e => {
     e.preventDefault();
     $('form').addClass('opened');
@@ -40,36 +45,49 @@ class SecretPage extends React.Component {
     $('form').removeClass('opened');
   };
 
-  // 페이지 이동
+  // **페이지 이동
   goToInsertPage = e => {
     const href = `/secretpage/insert`;
     Router.push(href);
   };
 
-  // API 사용
-  deletedImage = async seq => {
-    console.log('check ', seq);
+  // **API 사용
+  deletedImage = async (seq, img) => {
     try {
-      let res = await deleteImgItem(seq);
-      console.log('check delete res', res);
+      if (confirm('Are you sure you want to delete it?')) {
+        let res = await deleteImgItem(seq, img);
+        if (res.status === 200) {
+          this.updatedList();
+        }
+      } else {
+        return false;
+      }
     } catch (err) {
-      console.log('delete img err');
+      console.log('delete img err', err);
     }
   };
 
-  //여기서부터 진행 TODO
   updatedList = async () => {
     try {
-      let res = await getImgList();
-      console.log('check', res);
+      let data = {
+        limit: 20,
+        offset: 0
+      };
+      let res = await getImgList(data);
+      this.setState({
+        imgList: res.result
+      });
     } catch (err) {
       console.log('upload  list err');
     }
   };
 
+  handleChangePage = no => {
+    console.log('check no');
+  };
+
   render() {
-    console.log('rendering');
-    const { onMenu, imgList } = this.state;
+    const { onMenu, imgList, total } = this.state;
     return (
       <>
         {/* <!-- Heading --> */}
@@ -136,7 +154,12 @@ class SecretPage extends React.Component {
         </form>
 
         {onMenu === 'Memory' ? (
-          <ImgList imgList={imgList} deletedImage={this.deletedImage} />
+          <ImgList
+            imgList={imgList}
+            deletedImage={this.deletedImage}
+            handleChangePage={this.handleChangePage}
+            total={total}
+          />
         ) : (
           ''
         )}

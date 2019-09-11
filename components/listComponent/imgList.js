@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from '../../helpers/pagination';
 
 const printList = (imgList, deletedImage) => {
   let items = imgList.map(item => (
@@ -15,7 +16,7 @@ const printList = (imgList, deletedImage) => {
           className="close"
           style={{ width: 5, height: 5, marginRight: 10 }}
           aria-label="Close"
-          onClick={() => deletedImage(item.seq)}
+          onClick={() => deletedImage(item.seq, item.img)}
         >
           <span aria-hidden="true">&times;</span>
         </button>
@@ -38,8 +39,7 @@ const printList = (imgList, deletedImage) => {
   return items;
 };
 
-const ImgList = ({ imgList, deletedImage }) => {
-  console.log('rendering2');
+const ImgList = ({ imgList, deletedImage, handleChangePage, total }) => {
   return (
     <>
       <main role="main">
@@ -54,33 +54,12 @@ const ImgList = ({ imgList, deletedImage }) => {
         </section>
       </main>
 
-      <div className="paging">
-        <div className="pagination p1">
-          <ul>
-            <a href="#">
-              <li>〈</li>
-            </a>
-            <a className="is-active" href="#">
-              <li>1</li>
-            </a>
-            <a href="#">
-              <li>2</li>
-            </a>
-            <a href="#">
-              <li>3</li>
-            </a>
-            <a href="#">
-              <li>4</li>
-            </a>
-            <a href="#">
-              <li>5</li>
-            </a>
-            <a href="#">
-              <li>〉</li>
-            </a>
-          </ul>
-        </div>
-      </div>
+      <Pagination
+        total={total}
+        handleChangePage={handleChangePage}
+        activeProps={1}
+        dataPerPage={20}
+      />
     </>
   );
 };
