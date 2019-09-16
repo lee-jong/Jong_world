@@ -2860,10 +2860,12 @@ body.is-menu-visible #menu {
 
   .p1{
     width: 100%;
-    max-width: 30%;
+    max-width: 50%;
     margin: 0 auto;
     position: relative;
     text-align: center;
+    top:50%;
+    left:22.5%;
   }
   
   .p1 a{
@@ -2872,7 +2874,6 @@ body.is-menu-visible #menu {
     line-height: 40px;
     padding: 0;
     text-align: center;
-
   }
   
   .p1 a.is-active{

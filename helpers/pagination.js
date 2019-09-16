@@ -104,9 +104,7 @@ class Pagination extends Component {
       {
         active: pageNo
       },
-      () => {
-        handleChangePage(this.state.active);
-      }
+      () => handleChangePage(this.state.active)
     );
   };
 

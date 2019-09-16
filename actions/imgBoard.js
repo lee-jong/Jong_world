@@ -1,10 +1,12 @@
 import { axiosInstance, handleSuccess, handleError } from './actionCofing';
+import { getLimit } from '../helpers/setting';
+import { async } from 'q';
 
 // limit, offset 추가 해야함
 export const getImgList = async option => {
   let data = {
-    limit: option.limit,
-    offset: option.offset
+    limit: getLimit,
+    offset: option.offset * getLimit
   };
   return await axiosInstance
     .post('/imgBoard', data)
@@ -26,6 +28,18 @@ export const deleteImgItem = async (seq, img) => {
   };
   return await axiosInstance
     .post('/deleteImg', data)
+    .then(handleSuccess)
+    .catch(handleError);
+};
+
+export const searchGetImgList = async option => {
+  let data = {
+    search: option.search,
+    type: option.type
+  };
+
+  return await axiosInstance
+    .post('/searchImgBoard', data)
     .then(handleSuccess)
     .catch(handleError);
 };

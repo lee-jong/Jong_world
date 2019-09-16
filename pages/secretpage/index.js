@@ -1,14 +1,18 @@
 import React from 'react';
 import ImgList from '../../components/listComponent/imgList';
 import Router from 'next/router';
-import { getImgList, deleteImgItem } from '../../actions/imgBoard';
+import {
+  getImgList,
+  deleteImgItem,
+  searchGetImgList
+} from '../../actions/imgBoard';
+import { async } from 'q';
 
 class SecretPage extends React.Component {
   static async getInitialProps({ query }) {
     let imgList = {};
     try {
       let data = {
-        limit: 20,
         offset: 0
       };
       imgList = await getImgList(data);
@@ -22,7 +26,10 @@ class SecretPage extends React.Component {
   state = {
     onMenu: 'Memory',
     imgList: !this.props.imgList.result ? [] : this.props.imgList.result,
-    total: !this.props.imgList.total ? [] : this.props.imgList.total
+    total: !this.props.imgList.total ? [] : this.props.imgList.total,
+    active: 1,
+    search: '',
+    type: ''
   };
 
   // **메뉴 이동
@@ -67,12 +74,13 @@ class SecretPage extends React.Component {
   };
 
   updatedList = async () => {
+    const { active } = this.state;
     try {
       let data = {
-        limit: 20,
-        offset: 0
+        offset: active - 1
       };
       let res = await getImgList(data);
+      console.log('check', res);
       this.setState({
         imgList: res.result
       });
@@ -81,12 +89,35 @@ class SecretPage extends React.Component {
     }
   };
 
+  searchList = async () => {
+    // 테스트 전
+    //offset 추가 하기
+    const { active, search, type } = this.state;
+    try {
+      let data = {
+        search,
+        type
+      };
+      let res = await searchGetImgList(data);
+      console.log('check', res);
+      // this.setState({})
+    } catch (err) {
+      console.log('search list err');
+    }
+  };
+
+  // **page 이동
   handleChangePage = no => {
-    console.log('check no');
+    this.setState(
+      {
+        active: no
+      },
+      () => this.updatedList()
+    );
   };
 
   render() {
-    const { onMenu, imgList, total } = this.state;
+    const { onMenu, imgList, total, active } = this.state;
     return (
       <>
         {/* <!-- Heading --> */}
@@ -158,6 +189,7 @@ class SecretPage extends React.Component {
             deletedImage={this.deletedImage}
             handleChangePage={this.handleChangePage}
             total={total}
+            activeProps={active}
           />
         ) : (
           ''

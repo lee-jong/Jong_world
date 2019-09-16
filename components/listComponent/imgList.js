@@ -1,5 +1,7 @@
 import React from 'react';
 import Pagination from '../../helpers/pagination';
+import { getLimit } from '../../helpers/setting';
+import { getDate } from '../../helpers/utils';
 
 const printList = (imgList, deletedImage) => {
   let items = imgList.map(item => (
@@ -27,7 +29,8 @@ const printList = (imgList, deletedImage) => {
           {item.sub_title}
         </h2>
         <h2 className="card-title title" style={{ fontSize: 14 }}>
-          {item.date}
+          {/* {item.date} */}
+          {getDate(item.date, 'YYMMDD')}
         </h2>
         <h2 className="card-title title" style={{ fontSize: 12 }}>
           내용
@@ -39,7 +42,13 @@ const printList = (imgList, deletedImage) => {
   return items;
 };
 
-const ImgList = ({ imgList, deletedImage, handleChangePage, total }) => {
+const ImgList = ({
+  imgList,
+  deletedImage,
+  handleChangePage,
+  total,
+  activeProps
+}) => {
   return (
     <>
       <main role="main">
@@ -57,8 +66,8 @@ const ImgList = ({ imgList, deletedImage, handleChangePage, total }) => {
       <Pagination
         total={total}
         handleChangePage={handleChangePage}
-        activeProps={1}
-        dataPerPage={20}
+        activeProps={activeProps}
+        dataPerPage={getLimit}
       />
     </>
   );
