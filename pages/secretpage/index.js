@@ -1,19 +1,14 @@
 import React from 'react';
 import ImgList from '../../components/listComponent/imgList';
 import Router from 'next/router';
-import {
-  getImgList,
-  deleteImgItem,
-  searchGetImgList
-} from '../../actions/imgBoard';
-import { async } from 'q';
+import { getImgList, deleteImgItem } from '../../actions/imgBoard';
 
 class SecretPage extends React.Component {
   static async getInitialProps({ query }) {
     let imgList = {};
     try {
       let data = {
-        offset: 0
+        active: 1
       };
       imgList = await getImgList(data);
     } catch (err) {
@@ -29,7 +24,7 @@ class SecretPage extends React.Component {
     total: !this.props.imgList.total ? [] : this.props.imgList.total,
     active: 1,
     search: '',
-    type: ''
+    type: 'title'
   };
 
   // **메뉴 이동
@@ -49,6 +44,31 @@ class SecretPage extends React.Component {
 
   offSearchInput = e => {
     $('form').removeClass('opened');
+  };
+
+  onChangePlaceholder = () => {
+    const { type } = this.state;
+
+    let placeholder = '';
+    switch (type) {
+      case 'title':
+        placeholder = '제목 검색';
+        break;
+
+      case 'sub_title':
+        placeholder = '부제목 검색';
+        break;
+
+      case 'content':
+        placeholder = '내용 검색';
+        break;
+
+      case 'date':
+        placeholder = '날짜 검색 ex)0901';
+        break;
+    }
+
+    return placeholder;
   };
 
   // **페이지 이동
@@ -74,35 +94,20 @@ class SecretPage extends React.Component {
   };
 
   updatedList = async () => {
-    const { active } = this.state;
-    try {
-      let data = {
-        offset: active - 1
-      };
-      let res = await getImgList(data);
-      console.log('check', res);
-      this.setState({
-        imgList: res.result
-      });
-    } catch (err) {
-      console.log('upload  list err');
-    }
-  };
-
-  searchList = async () => {
-    // 테스트 전
-    //offset 추가 하기
     const { active, search, type } = this.state;
     try {
       let data = {
+        active,
         search,
         type
       };
-      let res = await searchGetImgList(data);
-      console.log('check', res);
-      // this.setState({})
+      let res = await getImgList(data);
+      this.setState({
+        imgList: res.result,
+        total: res.total
+      });
     } catch (err) {
-      console.log('search list err');
+      console.log('upload  list err');
     }
   };
 
@@ -116,8 +121,18 @@ class SecretPage extends React.Component {
     );
   };
 
+  //검색 값 변경
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onEnterSearch = e => {
+    if (e.keyCode !== 13) return;
+    this.updatedList();
+  };
+
   render() {
-    const { onMenu, imgList, total, active } = this.state;
+    const { onMenu, imgList, total, active, type } = this.state;
     return (
       <>
         {/* <!-- Heading --> */}
@@ -171,12 +186,28 @@ class SecretPage extends React.Component {
             </div>
           </div>
         </section>
-
         <form className="search-bar">
+          <select
+            style={{
+              width: 220,
+              borderColor: '#d24d57'
+            }}
+            name="type"
+            defaultValue={type}
+            onChange={this.handleChange}
+          >
+            <option value="title">제목</option>
+            <option value="sub_title">부제</option>
+            <option value="content">내용</option>
+            <option value="date">날짜</option>
+          </select>
           <input
             type="search"
             placeholder="Search ex. 1908 (년/월)"
             onBlur={this.offSearchInput}
+            onChange={this.handleChange}
+            name="search"
+            onKeyDown={this.onEnterSearch}
           />
           <button onClick={this.onSearchInput}>
             <span className="fontawesome-search"></span>
