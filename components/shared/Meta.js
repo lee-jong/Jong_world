@@ -5,6 +5,7 @@ import '../../static/styles/assets/css/button.css';
 import '../../static/styles/assets/css/app.css';
 import '../../static/styles/assets/css/theme.css';
 import '../../static/styles/assets/css/search.css';
+import '../../static/styles/assets/css/popup.css';
 
 const Meta = () => {
   return (

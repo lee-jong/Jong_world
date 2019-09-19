@@ -1,23 +1,33 @@
 import React from 'react';
 
+import Popup from '../components/popup/info';
+
 class Home extends React.Component {
   static async getInitialProps({}) {
     return {};
   }
 
+  state = {
+    onPopup: false
+  };
+
+  // ** popup on/off func
+  displayPopup = () => {
+    this.setState({ onPopup: true });
+  };
+
+  blockPopup = () => {
+    this.setState({ onPopup: false });
+  };
+
   render() {
+    const { onPopup } = this.state;
     return (
       <>
         {/* <!-- Banner --> */}
         <section id="banner">
           <div className="inner">
             <h1>I'AM IRON MAN !</h1>
-            {/* <p>
-              A responsive business oriented template with a video background
-              <br />
-              designed by <a href="https://templated.co/">TEMPLATED</a> and
-              released under the Creative Commons License.
-            </p> */}
           </div>
           <video
             autoPlay
@@ -43,16 +53,16 @@ class Home extends React.Component {
               <section>
                 <div className="content">
                   <header>
-                    <a href="#" className="icon fa-vcard-o">
+                    <a
+                      href="#!"
+                      className="icon fa-vcard-o"
+                      onClick={this.displayPopup}
+                    >
                       <span className="label">Icon</span>
                     </a>
-                    <h3>Feugiat consequat</h3>
+                    <h3>Info</h3>
                   </header>
-                  <p>
-                    Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-                    adipiscing gravida odio porttitor sem non mi integer non
-                    faucibus.
-                  </p>
+                  <p>have history and information.</p>
                 </div>
               </section>
               <section>
@@ -222,6 +232,7 @@ class Home extends React.Component {
               </section>
             </div>
           </div>
+          <Popup onPopup={onPopup} blockPopup={this.blockPopup} />
         </section>
       </>
     );
