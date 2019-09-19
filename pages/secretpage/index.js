@@ -62,10 +62,6 @@ class SecretPage extends React.Component {
       case 'content':
         placeholder = '내용 검색';
         break;
-
-      case 'date':
-        placeholder = '날짜 검색 ex)0901';
-        break;
     }
 
     return placeholder;
@@ -199,11 +195,10 @@ class SecretPage extends React.Component {
             <option value="title">제목</option>
             <option value="sub_title">부제</option>
             <option value="content">내용</option>
-            <option value="date">날짜</option>
           </select>
           <input
             type="search"
-            placeholder="Search ex. 1908 (년/월)"
+            placeholder={this.onChangePlaceholder()}
             onBlur={this.offSearchInput}
             onChange={this.handleChange}
             name="search"
