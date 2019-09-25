@@ -5,21 +5,26 @@ import BaseLayout from '../components/layout/BaseLayout';
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
+    let path = router.route.slice(0, 16);
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    return { pageProps, path };
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, path } = this.props;
     return (
       <Container>
-        <BaseLayout>
+        {path !== '/developmentNote' ? (
+          <BaseLayout>
+            <Component {...pageProps} />
+          </BaseLayout>
+        ) : (
           <Component {...pageProps} />
-        </BaseLayout>
+        )}
       </Container>
     );
   }
