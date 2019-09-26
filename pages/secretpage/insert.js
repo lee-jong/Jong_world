@@ -37,9 +37,7 @@ class Insert extends React.Component {
       } else {
         alert('오류가 발생하였습니다.');
       }
-    } catch (err) {
-      console.log('form img upload err', err);
-    }
+    } catch (err) {}
   };
 
   handleChangeImg = e => {
@@ -49,9 +47,7 @@ class Insert extends React.Component {
     reader.onload = () => {
       this.setState({ image: reader.result, upload: file });
     };
-    reader.onerror = () => {
-      console.log('img upload err', err);
-    };
+    reader.onerror = () => {};
   };
 
   goToListPage = () => {

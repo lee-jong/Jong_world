@@ -1,6 +1,11 @@
 import React from 'react';
 
 class Detail extends React.Component {
+  componentDidMount() {
+    // 스크롤 상단으로 초기화
+    scrollTo(0, 0);
+  }
+
   render() {
     return (
       <>

@@ -84,9 +84,7 @@ class SecretPage extends React.Component {
       } else {
         return false;
       }
-    } catch (err) {
-      console.log('delete img err', err);
-    }
+    } catch (err) {}
   };
 
   updatedList = async () => {
@@ -102,9 +100,7 @@ class SecretPage extends React.Component {
         imgList: res.result,
         total: res.total
       });
-    } catch (err) {
-      console.log('upload  list err');
-    }
+    } catch (err) {}
   };
 
   // **page 이동
