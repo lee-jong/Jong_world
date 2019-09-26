@@ -388,7 +388,7 @@ textarea {
   display: block;
   outline: 0;
   text-decoration: none;
-  width: 100%; }
+   }
   input[type="text"]:invalid,
   input[type="password"]:invalid,
   input[type="email"]:invalid,
@@ -405,13 +405,7 @@ label {
   font-weight: 600;
   margin: 0 0 1rem 0; }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input[type="search"],
-input[type="url"] {
-  height: 3.25rem; }
+
 
 select {
   background-size: 1.25rem;

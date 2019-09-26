@@ -10,7 +10,6 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
-
     return { pageProps, path };
   }
 
@@ -18,7 +17,7 @@ class MyApp extends App {
     const { Component, pageProps, path } = this.props;
     return (
       <Container>
-        {path !== '/developmentNote' ? (
+        {path !== '/developmentNote' && path !== '/login' ? (
           <BaseLayout>
             <Component {...pageProps} />
           </BaseLayout>
