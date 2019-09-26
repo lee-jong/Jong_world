@@ -1,5 +1,6 @@
 import React from 'react';
-import { detailDeveloper } from '../../actions/developer';
+import { detailDeveloper, deleteDeveloper } from '../../actions/developer';
+import Router from 'next/router';
 
 class Detail extends React.Component {
   static async getInitialProps({ query }) {
@@ -18,8 +19,27 @@ class Detail extends React.Component {
     scrollTo(0, 0);
   }
 
+  deletedDeveloper = async (seq, img) => {
+    try {
+      let res = await deleteDeveloper(seq, img);
+      if (res.status === 200) {
+        let href = `/developer`;
+        Router.push(href);
+      } else {
+        alert('삭제 실패');
+      }
+    } catch (err) {}
+  };
+
   render() {
-    const { seq, title, sub_title, content, sample } = this.props.res.result[0];
+    const {
+      seq,
+      title,
+      sub_title,
+      content,
+      sample,
+      img
+    } = this.props.res.result[0];
     return (
       <>
         {/* <!-- Heading --> */}
@@ -38,6 +58,16 @@ class Detail extends React.Component {
                 className="developer-iframe"
                 src={`/developmentNote${sample ? '/' + sample : ''}`}
               ></iframe>
+
+              <hr />
+              <div className="devaloper-footer">
+                <button
+                  className="devaloper-button"
+                  onClick={() => this.deletedDeveloper(seq, img)}
+                >
+                  삭제
+                </button>
+              </div>
             </div>
           </div>
         </section>

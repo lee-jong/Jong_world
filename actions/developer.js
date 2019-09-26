@@ -33,13 +33,13 @@ export const detailDeveloper = async seq => {
     .catch(handleError);
 };
 
-// export const deleteImgItem = async (seq, img) => {
-//   let data = {
-//     seq,
-//     img
-//   };
-//   return await axiosInstance
-//     .post('/deleteImg', data)
-//     .then(handleSuccess)
-//     .catch(handleError);
-// };
+export const deleteDeveloper = async (seq, img) => {
+  let data = {
+    seq,
+    img
+  };
+  return await axiosInstance
+    .post('/developerDelete', data)
+    .then(handleSuccess)
+    .catch(handleError);
+};

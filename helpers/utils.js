@@ -5,6 +5,8 @@ export const dotdotdot = (text, maxLength = 96) => {
   return text;
 };
 
+export const exception = res => res.status === 404 || res.state === 402;
+
 export const getDate = (date, type) => {
   let prototypeDate = new Date(date);
 

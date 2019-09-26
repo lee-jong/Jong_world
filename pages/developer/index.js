@@ -2,6 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import DeveloperList from '../../components/listComponent/developerList';
 import { getDeveloperList } from '../../actions/developer';
+import { exception } from '../../helpers/utils';
 
 class Developer extends React.Component {
   static async getInitialProps({ query }) {
@@ -11,8 +12,7 @@ class Developer extends React.Component {
         active: 1
       };
       developerList = await getDeveloperList(data);
-      console.log('developerList', developerList);
-      if (developerList.state === 404) {
+      if (exception(developerList)) {
         developerList = { result: [], total: 0 };
       }
     } catch (err) {
