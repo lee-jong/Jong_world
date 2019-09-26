@@ -1,8 +1,13 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 
 const printList = (itemList, goToDetailPage) => {
   let list = itemList.map(item => (
-    <div className="devaloper-item" onClick={goToDetailPage}>
+    <div
+      className="devaloper-item"
+      key={item.seq}
+      onClick={() => goToDetailPage(item.seq)}
+    >
       <img
         className="devaloper-img"
         src={`http://localhost:4000/static2/${item.img}`}
@@ -24,9 +29,14 @@ const devaloperList = ({ goToDetailPage, goToCreatePage, itemList }) => {
       <div className="inner">
         <div className="content">
           {/* 여기서부터 map ==> go  */}
-          {printList(itemList, goToDetailPage)}
+          {itemList.length === 0 ? (
+            <div className="devaloper-item">
+              <h3> not contnet</h3>
+            </div>
+          ) : (
+            printList(itemList, goToDetailPage)
+          )}
           <hr />
-          {/*  */}
           <div className="devaloper-footer">
             <button className="devaloper-button" onClick={goToCreatePage}>
               생성
@@ -38,4 +48,4 @@ const devaloperList = ({ goToDetailPage, goToCreatePage, itemList }) => {
   );
 };
 
-export default devaloperList;
+export default withRouter(devaloperList);

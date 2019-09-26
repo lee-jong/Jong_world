@@ -1,5 +1,6 @@
 import { axiosInstance, handleSuccess, handleError } from './actionCofing';
 import { getDeveloperLimit } from '../helpers/setting';
+import { async } from 'q';
 
 // limit, offset 추가 해야함
 export const getDeveloperList = async option => {
@@ -22,13 +23,23 @@ export const insertDeveloper = async formData => {
     .catch(handleError);
 };
 
-export const deleteImgItem = async (seq, img) => {
+export const detailDeveloper = async seq => {
   let data = {
-    seq,
-    img
+    seq
   };
   return await axiosInstance
-    .post('/deleteImg', data)
+    .post('/developerDetail', data)
     .then(handleSuccess)
     .catch(handleError);
 };
+
+// export const deleteImgItem = async (seq, img) => {
+//   let data = {
+//     seq,
+//     img
+//   };
+//   return await axiosInstance
+//     .post('/deleteImg', data)
+//     .then(handleSuccess)
+//     .catch(handleError);
+// };

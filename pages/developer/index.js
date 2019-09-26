@@ -11,6 +11,10 @@ class Developer extends React.Component {
         active: 1
       };
       developerList = await getDeveloperList(data);
+      console.log('developerList', developerList);
+      if (developerList.state === 404) {
+        developerList = { result: [], total: 0 };
+      }
     } catch (err) {
       developerList = { result: [], total: 0 };
     }
@@ -21,11 +25,14 @@ class Developer extends React.Component {
   }
 
   state = {
-    itemList: this.props.developerList.result
+    itemList:
+      this.props.developerList.total === 0
+        ? []
+        : this.props.developerList.result
   };
 
-  goToDetailPage = () => {
-    let href = '/developer/detail';
+  goToDetailPage = seq => {
+    let href = `/developer/detail?seq=${seq}`;
     Router.push(href);
   };
 
