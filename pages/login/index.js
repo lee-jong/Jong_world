@@ -4,7 +4,7 @@ import '../../static/styles/assets/css/login.css';
 
 class Login extends React.Component {
   state = {
-    loginMode: true
+    loginMode: false
   };
 
   changeLoginForm = () => {
@@ -20,14 +20,17 @@ class Login extends React.Component {
         {loginMode ? (
           <div className="login">
             <div className="login-form">
-              <p className="login-title"> 로그인 </p>
+              <p className="login-title"> Do you want login? </p>
               <div className="login-id">
                 <p className="login-text"> ID </p>
                 <input className="login-input" type="text" />
               </div>
               <div className="login-pw">
-                <p className="login-text">패스워드 </p>
+                <p className="login-text">PW</p>
                 <input className="login-input" type="password" />
+              </div>
+              <div className="login-button">
+                <button>login</button>
               </div>
             </div>
           </div>

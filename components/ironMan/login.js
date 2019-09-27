@@ -7,7 +7,9 @@ const IronMan = ({ changeLoginForm }) => {
         <div className="login-ironMan-text">
           <h2 className="login-ironMan-title">Welcome</h2>
           <br />
-          <p className="login-ironMan-text2">Jong's World</p>
+          <p className="login-ironMan-text2">
+            <span className="login-blink">Jong's</span> World
+          </p>
         </div>
         <a onClick={() => changeLoginForm()}>
           <svg
@@ -148,9 +150,14 @@ const IronMan = ({ changeLoginForm }) => {
           </svg>
         </a>
         <div className="login-ironMan-text3">
-          <p className="login-ironMan-text4">If you want to come in</p>
+          <p className="login-ironMan-text4">
+            If <span className="login-blink3">you </span>want to{' '}
+            <span className="login-blink4">come</span> in
+          </p>
           <hr />
-          <p className="login-ironMan-text4">Click IronMan !</p>
+          <p className="login-ironMan-text4">
+            <span className="login-blink2">Click IronMan !</span>
+          </p>
         </div>
       </div>
     </>
