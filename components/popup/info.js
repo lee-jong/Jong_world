@@ -13,11 +13,11 @@ const info = ({ onPopup, blockPopup }) => {
         </span>
         <img className="infoImg" src="/static/styles/images/infoImg.jpg" />
         <br />
-        <h4>Name : IRON-MAN</h4>
-        <span style={{ fontSize: 25 }}>
+        <h4 className="info-title">Name : IRON-MAN</h4>
+        <span className="info-content" style={{ fontSize: 25 }}>
           Special ability : laser shooting with one hand
         </span>
-        <span style={{ fontSize: 25 }}>
+        <span className="info-content" style={{ fontSize: 25 }}>
           Career : I almost beat Hulk,
           <br />
           &emsp;&emsp;&emsp;&nbsp; arms sales business

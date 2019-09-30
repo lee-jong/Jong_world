@@ -2969,3 +2969,16 @@ body.is-menu-visible #menu {
   }
 
 
+  .info-title{
+    color :yellow;
+    text-shadow: 0 0 20px #f29393, 0 0 40px #f29393, 0 0 30px #f29393,
+    0 0 40px #cd3535, 0 0 10px #cd3535, 0 0 80px #cd3535, 0 0 100px #cd3535,
+    0 0 120px #b71824, 0 0 10px #b71824;
+  }
+
+  .info-content{
+    color : yellow;
+    text-shadow: 0 0 20px #f29393, 0 0 40px #f29393, 0 0 30px #f29393,
+    0 0 40px #cd3535, 0 0 10px #cd3535, 0 0 80px #cd3535, 0 0 100px #cd3535,
+    0 0 120px #b71824, 0 0 10px #b71824;
+  }
