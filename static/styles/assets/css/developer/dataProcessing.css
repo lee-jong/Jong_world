@@ -1,0 +1,42 @@
+.dataProcessing-form {
+  width: 100%;
+}
+
+.dataProcessing-menus ul {
+  padding-top: 10px;
+}
+
+.dataProcessing-menus ul li {
+  display: inline;
+  border-left: 1px solid #999;
+  font: bold 18px Dotum;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dataProcessing-content {
+  width: 100%;
+  margin-top: 5%;
+}
+
+.dataProcessing-date-menu ul {
+  padding-top: 10px;
+}
+
+.dataProcessing-date-menu ul li {
+  display: inline;
+  font: bold 12px Dotum;
+  padding-left: 0px;
+  padding-right: 10px;
+}
+
+.dataProcessing-date ul {
+  padding-top: 10px;
+}
+
+.dataProcessing-date ul li {
+  display: inline;
+  font: bold 15px Dotum;
+  padding-left: 0px;
+  padding-right: 10px;
+}

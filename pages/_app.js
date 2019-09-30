@@ -6,7 +6,7 @@ import { tokenVaildCheck } from '../helpers/vaildCheck';
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
-    let path = ctx.asPath;
+    let path = ctx.asPath.slice(0, 16);
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
