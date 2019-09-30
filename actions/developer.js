@@ -1,6 +1,5 @@
 import { axiosInstance, handleSuccess, handleError } from './actionCofing';
 import { getDeveloperLimit } from '../helpers/setting';
-import { async } from 'q';
 
 // limit, offset 추가 해야함
 export const getDeveloperList = async option => {

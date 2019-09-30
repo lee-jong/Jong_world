@@ -1,16 +1,23 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import BaseLayout from '../components/layout/BaseLayout';
+import { tokenVaildCheck } from '../helpers/vaildCheck';
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
-    let path = router.route.slice(0, 16);
+    let path = ctx.asPath;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
     return { pageProps, path };
+  }
+
+  componentDidMount() {
+    const { path } = this.props;
+    if (path === '/developmentNote' || path === '/login') return;
+    tokenVaildCheck(sessionStorage.getItem('token'));
   }
 
   render() {
