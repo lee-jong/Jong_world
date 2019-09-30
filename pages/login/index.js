@@ -23,6 +23,11 @@ class Login extends React.Component {
     });
   };
 
+  enterKeyLogin = e => {
+    if (e.keyCode !== 13) return;
+    this.getTokenLogin();
+  };
+
   //Token & Login API
   getTokenLogin = async () => {
     try {
@@ -66,6 +71,7 @@ class Login extends React.Component {
                   onChange={this.onChangeInput}
                   className="login-input"
                   type="password"
+                  onKeyDown={this.enterKeyLogin}
                 />
               </div>
               <div className="login-button">
