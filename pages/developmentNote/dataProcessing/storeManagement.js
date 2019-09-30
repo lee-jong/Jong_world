@@ -58,6 +58,7 @@ class storeManagement extends React.Component {
           <div className="dataProcessing-header">
             <Menu />
           </div>
+          <h5>매장관리</h5>
           <div className="dataProcessing-content">
             <select onChange={this.onChangeMenu}>
               <option value="MM">월 별</option>

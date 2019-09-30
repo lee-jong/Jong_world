@@ -11,6 +11,7 @@ class dataProcessing extends React.Component {
           <div className="dataProcessing-header">
             <Menu />
           </div>
+          <h5>매출관리</h5>
           <div className="dataProcessing-content">
             <table className="dataProcessing-list">
               <thead>

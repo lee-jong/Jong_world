@@ -12,6 +12,7 @@ class GrossSales extends React.Component {
           <div className="dataProcessing-header">
             <Menu />
           </div>
+          <h5>총매출</h5>
           <div>총 매출 page</div>
         </div>
       </>

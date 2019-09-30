@@ -12,6 +12,7 @@ class salesByStore extends React.Component {
           <div className="dataProcessing-header">
             <Menu />
           </div>
+          <h5>품목관리</h5>
           <div className="dataProcessing-content">
             <table className="dataProcessing-list">
               <thead>
