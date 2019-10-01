@@ -5,6 +5,10 @@ import Menu from '../../../components/shared/dataProcessing/menu';
 import Router from 'next/router';
 
 class storeManagement extends React.Component {
+  static async getInitialProps({ query }) {
+    return {};
+  }
+
   state = {
     dateMenu: 'MM'
   };
