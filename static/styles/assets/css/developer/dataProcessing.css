@@ -40,3 +40,36 @@
   padding-left: 0px;
   padding-right: 10px;
 }
+
+.dataProcessing-footer {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  text-align: right;
+}
+
+.dataProcessing-button {
+  color: #b71824;
+}
+
+.creatrStore {
+  width: 100%;
+}
+
+.createStore-table {
+  margin-top: 5%;
+}
+
+.createStore-footer {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  text-align: right;
+}
+.createStore-button {
+  color: #b71824;
+}
+
+.createStore-table th {
+  top: 10%;
+}

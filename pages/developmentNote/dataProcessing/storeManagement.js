@@ -2,6 +2,7 @@
 import React from 'react';
 import '../../../static/styles/assets/css/developer/dataProcessing.css';
 import Menu from '../../../components/shared/dataProcessing/menu';
+import Router from 'next/router';
 
 class storeManagement extends React.Component {
   state = {
@@ -15,18 +16,18 @@ class storeManagement extends React.Component {
       return (
         <nav className="dataProcessing-date-menu">
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
+            <li>1月</li>
+            <li>2月</li>
+            <li>3月</li>
+            <li>4月</li>
+            <li>5月</li>
+            <li>6月</li>
+            <li>7月</li>
+            <li>8月</li>
+            <li>9月</li>
+            <li>10月</li>
+            <li>11月</li>
+            <li>12月</li>
           </ul>
         </nav>
       );
@@ -36,8 +37,8 @@ class storeManagement extends React.Component {
       return (
         <nav className="dataProcessing-date-menu">
           <ul>
-            <li>2018</li>
-            <li>2019</li>
+            <li>2018年</li>
+            <li>2019年</li>
           </ul>
         </nav>
       );
@@ -48,6 +49,11 @@ class storeManagement extends React.Component {
     this.setState({
       dateMenu: e.target.value
     });
+  };
+
+  goToCreateStore = () => {
+    let href = '/developmentNote/dataProcessing/createStore';
+    Router.push(href);
   };
 
   render() {
@@ -91,6 +97,15 @@ class storeManagement extends React.Component {
                 </tr>
               </tbody>
             </table>
+            <hr />
+            <div className="dataProcessing-footer">
+              <button
+                className="dataProcessing-button"
+                onClick={this.goToCreateStore}
+              >
+                등록
+              </button>
+            </div>
           </div>
         </div>
       </>
