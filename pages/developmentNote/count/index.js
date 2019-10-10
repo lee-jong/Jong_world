@@ -43,7 +43,7 @@ class Count extends React.Component {
       return getTime;
     }
 
-    if (time > 3600) {
+    if (time >= 3600) {
       let hh = parseInt(time / 3600);
       let mm = parseInt((time % 3600) / 60);
       let ss = time % 60;
