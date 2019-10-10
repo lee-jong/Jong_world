@@ -3,7 +3,7 @@ import React from 'react';
 class Count extends React.Component {
   state = {};
 
-  users = ['Kevin', 'Alax', 'Brod', 'Jong'];
+  users = ['Kevin', 'Alax', 'Brod', 'Jong', 'Rkfl'];
 
   onStartTimer = e => {
     e.target.disabled = 'disabled';
@@ -32,10 +32,11 @@ class Count extends React.Component {
 
   changeTimer = time => {
     let getTime;
-    if (time <= 60) {
+    if (time < 60) {
       return (getTime = `${time}초`);
     }
-    if (time > 60 && time < 3600) {
+
+    if (time >= 60 && time < 3600) {
       let mm = parseInt(time / 60);
       let ss = time % 60;
       getTime = `${mm}분 ${ss}초`;
