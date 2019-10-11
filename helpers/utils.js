@@ -1,12 +1,3 @@
-export const dotdotdot = (text, maxLength = 96) => {
-  if (text.length > maxLength) {
-    return `${text.substring(0, maxLength)}...`;
-  }
-  return text;
-};
-
-export const exception = res => res.status === 404 || res.state === 402;
-
 export const getDate = (date, type) => {
   let prototypeDate = new Date(date);
 
@@ -40,6 +31,22 @@ export const getDate = (date, type) => {
   let resDate = '';
 
   switch (type) {
+    case 'YY':
+      resDate = yearDate;
+      break;
+
+    case 'MM':
+      resDate = monthDate;
+      break;
+
+    case 'DD':
+      resDate = dayDate;
+      break;
+
+    case 'HH':
+      resDate = hours;
+      break;
+
     case 'YYDD':
       resDate = yearDate + '-' + monthDate;
       break;
@@ -73,4 +80,20 @@ export const getDate = (date, type) => {
   }
 
   return resDate;
+};
+
+export const getDays = YY => {
+  let resDays = [];
+  for (let i = 1; i <= 12; i++) {
+    let days = { month: i, lastDay: 32 - new Date(YY, i - 1, 32).getDate() };
+    resDays.push(days);
+  }
+
+  return resDays;
+};
+
+export const dayOfWeek = date => {
+  // data 의 규격은 'yyyy-mm-dd'
+  let week = ['일', '월', '화', '수', '목', '금', '토'];
+  return week[new Date(date).getDay()];
 };

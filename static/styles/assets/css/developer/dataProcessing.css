@@ -73,3 +73,7 @@
 .createStore-table th {
   top: 10%;
 }
+
+.dataPicker-content select {
+  display: inline;
+}

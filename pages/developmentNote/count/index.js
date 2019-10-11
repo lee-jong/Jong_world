@@ -8,7 +8,6 @@ class Count extends React.Component {
   onStartTimer = e => {
     e.target.disabled = 'disabled';
     let id = e.target.name;
-    console.log('start', id);
 
     this[e.target.name] = setInterval(() => {
       if (this.state[id]) {
